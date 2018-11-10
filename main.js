@@ -1,6 +1,6 @@
 //install packages
 const googleMapsClient = require('@google/maps').createClient({
-    key: 'AIzaSyD0ryZpgxKmnM81pq9e-tAbh7Zu39G5BBI'  
+    key: "key goes here"  
 });
 var fs = require('fs')
 
