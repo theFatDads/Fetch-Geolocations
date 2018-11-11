@@ -3,8 +3,9 @@ const googleMapsClient = require('@google/maps').createClient({
     key: 'AIzaSyD0ryZpgxKmnM81pq9e-tAbh7Zu39G5BBI' 
 });
 var fs = require('fs')
+var http = require('http');
 
-var data = require("./locations.1.json"); //TODO fix this
+var data = require("./locations.json"); //TODO fix this
 var geoData = [];
 var name_of_thing_we_want_from_the_data = "address"
 var actual_name_of_thing_we_want_from_the_data = "name"
@@ -42,7 +43,15 @@ setTimeout(function(){
             console.log("JSON saved");
         }
     });
-}, 10000)
+}, 100000);
+
+
+http.createServer(function (req, res) {
+  fs.readFile('geo-locations.json', function(err, data) {
+    res.write(data);
+    res.end();
+  });
+}).listen(8080);
 
 
 
