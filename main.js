@@ -20,8 +20,8 @@ for (const location of data) {
       }, function(err, response) {
         if (!err) {
             var newLocation = response.json.results;
-            newLocation.name = location[actual_name_of_thing_we_want_from_the_data];
-            console.log(newLocation.name);
+            newLocation[0].name = location[actual_name_of_thing_we_want_from_the_data];
+            console.log(newLocation[0].name);
             geoData.push(newLocation);
             console.log("location geocoded");
         } else{
