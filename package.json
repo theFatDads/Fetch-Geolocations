@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/theFatDads/map-update#readme",
   "dependencies": {
-    "@google/maps": "^0.5.5"
+    "@google/maps": "^0.5.5",
+    "express": "^4.16.4"
   }
 }
