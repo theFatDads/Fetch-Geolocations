@@ -43,7 +43,7 @@ setTimeout(function(){
             console.log("JSON saved");
         }
     });
-}, 100000);
+}, 10000);
 
 
 http.createServer(function (req, res) {
