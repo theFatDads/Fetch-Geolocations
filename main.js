@@ -8,25 +8,33 @@ var http = require('http');
 
 var data = require("./locations.1.json"); //TODO fix this
 var geoData = [];
-var name_of_thing_we_want_from_the_data = "address"
-var actual_name_of_thing_we_want_from_the_data = "name"
+var actual_name_of_thing_we_want_from_the_data = "dba"
 
-function get_the_data_that_we_need_to_put_in_the_map(jsonFile, addressString){
-    return;
-}
+var location_identifiers =["address", "city", "state"];
 
 let total_geocoded = 0; //keeps track of # of geocoded responses
-for (const location of data) {
-    googleMapsClient.geocode({address: location[name_of_thing_we_want_from_the_data]})
+
+for (let location of data) {
+    let addressString = "";
+    for (let identifier of location_identifiers) {
+        if (addressString == null) {
+            addressString += location[identifier];
+        } else {
+            addressString += " " + location[identifier];
+        }
+    }
+    console.log(addressString);
+    
+    googleMapsClient.geocode({address: addressString})
     .asPromise()
     .then((response) => {
         var newLocation = response.json.results;
         newLocation[0].name = location[actual_name_of_thing_we_want_from_the_data];
-        console.log(newLocation[0].name);
+        console.log(location[actual_name_of_thing_we_want_from_the_data]);
         geoData.push(newLocation);
         console.log("location geocoded");
         total_geocoded++;
-        if (total_geocoded == data.length-1) {
+        if (total_geocoded == data.length) {
             for (let i = 0; i < geoData.length; i++) {
                 geoData[i] = geoData[i][0];
             }
@@ -49,7 +57,7 @@ http.createServer(function (req, res) {
     res.write(data);
     res.end();
   });
-}).listen(8080);
+}).listen(process.env.PORT || 5000);
 
 
 
