@@ -60,11 +60,12 @@ function convertData(data, place_name_identifier, location_identifiers, output_f
 //convertData(require("./testdata.json"), "name", ["address", "city", "state"], "testdata-converted.json");
 
 //Substance Abuse Care Facilities
-convertData(require("./substance-abuse-care-facilities.json"), "name", ["address", "city", "state"], "substance-abuse-care-facilities-converted.json");
+//convertData(require("./substance-abuse-care-facilities.json"), "name", ["address", "city", "state"], "substance-abuse-care-facilities-converted.json");
 
 
 //Publishes entire repository to server, get by querying filename
 http.createServer(function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
     var q = url.parse(req.url, true);
     var filename = "." + q.pathname;
     fs.readFile(filename, function(err, data) {
