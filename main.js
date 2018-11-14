@@ -62,42 +62,6 @@ function convertData(data, place_name_identifier, location_identifiers, output_f
 //Substance Abuse Care Facilities
 //convertData(require("./substance-abuse-care-facilities.json"), "name", ["address", "city", "state"], "substance-abuse-care-facilities-converted.json");
 
-//Pharmacies that Perscribe Naxalone and Other Medicince 
-/*
-var data = null;
-var geoData = [];
-let total_geocoded = 0; //keeps track of # of geocoded responses
-let output_file = "pharmacies-with-naxalone-converted.json";
-
-for (const location of data) {
-    let addressString = location[10] + location[11] + location[12];
-    googleMapsClient.geocode({address: addressString})
-    .asPromise()
-    .then((response) => {
-        var newLocation = response.json.results;
-        newLocation[0].name = location[8];
-        console.log(location[8]);
-        geoData.push(newLocation);
-        console.log("location geocoded");
-        total_geocoded++;
-        if (total_geocoded == data.length) {
-            for (let i = 0; i < geoData.length; i++) {
-                geoData[i] = geoData[i][0];
-            }
-            fs.writeFile(output_file, JSON.stringify(geoData), function(err) {
-                if(err) {
-                    console.log(err);
-                } else {
-                    console.log("JSON saved");
-                }
-            });
-        }
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-} */
-
 //Publishes entire repository to server, get by querying filename
 http.createServer(function (req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
