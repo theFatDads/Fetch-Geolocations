@@ -1,4 +1,4 @@
-# map-update
+# Fetch-Geolocations
 ## About
 While working on our "Connecticut Tech Challenge" submission, my team wanted to implement data from data.ct.gov in Google Maps. We found that the data either was in geoJSON format and a general JSON file with data.
 
